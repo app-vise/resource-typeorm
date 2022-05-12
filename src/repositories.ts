@@ -13,7 +13,7 @@ const resourceSchemaFactory = new ResourceSchemaFactory(
   ResourceSchema
 );
 
-const providers: Provider[] = [
+export const ResourceRepositories: Provider[] = [
   // Resource
   TypeormRepositoryProvider.provide(
     ResourceReadRepository,
@@ -26,5 +26,3 @@ const providers: Provider[] = [
     resourceSchemaFactory
   ),
 ];
-
-export default providers;

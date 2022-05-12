@@ -1,3 +1,3 @@
 import { ResourceSchema } from './resource';
 
-export default [ResourceSchema];
+export const ResourceModels = [ResourceSchema];
