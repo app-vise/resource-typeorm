@@ -1,9 +1,5 @@
 import { TypeormRepositoryProvider } from '@appvise/typeorm';
-import {
-  Resource,
-  ResourceReadRepository,
-  ResourceWriteRepository,
-} from '@appvise/resource';
+import { Resource } from '@appvise/resource';
 import { ResourceSchema, ResourceSchemaFactory } from './resource';
 import { Provider } from '@nestjs/common/interfaces/modules/provider.interface';
 
@@ -16,12 +12,12 @@ const resourceSchemaFactory = new ResourceSchemaFactory(
 export const ResourceRepositories: Provider[] = [
   // Resource
   TypeormRepositoryProvider.provide(
-    ResourceReadRepository,
+    'ResourceReadRepository',
     ResourceSchema,
     resourceSchemaFactory
   ),
   TypeormRepositoryProvider.provide(
-    ResourceWriteRepository,
+    'ResourceWriteRepository',
     ResourceSchema,
     resourceSchemaFactory
   ),
