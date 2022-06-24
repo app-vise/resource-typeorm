@@ -40,7 +40,7 @@
   "homepage": "https://github.com/app-vise/resource-typeorm#readme",
   "dependencies": {
     "@appvise/domain": "^1.0.7",
-    "@appvise/resource": "^1.0.0",
+    "@appvise/resource": "^1.0.4",
     "@appvise/typeorm": "^1.0.5"
   },
   "devDependencies": {
