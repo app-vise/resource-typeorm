@@ -3,7 +3,7 @@ import {
   EntitySchemaFactory as TypeOrmEntitySchemaFactory,
   EntitySchemaProps,
 } from '@appvise/typeorm';
-import { UUID } from '@appvise/domain';
+import { DateVO, UUID } from '@appvise/domain';
 import { File, Resource, ResourceProps } from '@appvise/resource';
 import { ResourceSchema } from './resource.schema';
 
