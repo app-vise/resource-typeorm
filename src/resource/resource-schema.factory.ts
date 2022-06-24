@@ -12,29 +12,28 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
   ResourceSchema
 > {
   protected toDomainProps(
-    resourceSchema: ResourceSchema
+    entitySchema: ResourceSchema
   ): TypeOrmEntityProps<ResourceProps> {
-    const id = new UUID(resourceSchema.id);
+    const id = new UUID(entitySchema.id);
 
     const props: ResourceProps = {
       file: new File({
-        bucket: resourceSchema.bucket,
-        name: resourceSchema.name,
-        mimeType: resourceSchema.mime_type,
-        size: resourceSchema.size,
-        url: resourceSchema.url,
-        public: resourceSchema.public,
+        bucket: entitySchema.bucket,
+        name: entitySchema.name,
+        mimeType: entitySchema.mime_type,
+        size: entitySchema.size,
+        url: entitySchema.url,
+        public: entitySchema.public,
       }),
-      type: resourceSchema.type,
+      type: entitySchema.type,
+      mutatedAt: new DateVO(entitySchema.mutated_at),
     };
 
     return { id, props };
   }
 
-  protected toSchemaProps(
-    resource: Resource
-  ): EntitySchemaProps<ResourceSchema> {
-    const props = resource.getPropsCopy();
+  protected toSchemaProps(entity: Resource): EntitySchemaProps<ResourceSchema> {
+    const props = entity.getPropsCopy();
 
     return {
       bucket: props.file.bucket,
@@ -44,6 +43,7 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
       url: props.file.url,
       public: props.file.public,
       type: props.type,
+      mutated_at: props.mutatedAt.value,
     };
   }
 }

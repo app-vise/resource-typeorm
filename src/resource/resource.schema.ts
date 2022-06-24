@@ -24,4 +24,7 @@ export class ResourceSchema extends EntityBaseSchema {
 
   @Column()
   readonly public!: boolean;
+
+  @Column({ type: 'timestamp', default: 'CURRENT_TIMESTAMP(6)' })
+  readonly mutated_at!: Date;
 }
