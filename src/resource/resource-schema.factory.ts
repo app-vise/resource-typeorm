@@ -26,7 +26,8 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
         public: entitySchema.public,
       }),
       type: entitySchema.type,
-      mutatedAt: new DateVO(entitySchema.mutated_at),
+      clientCreatedAt: new DateVO(entitySchema.client_created_at),
+      clientUpdatedAt: new DateVO(entitySchema.client_updated_at),
     };
 
     return { id, props };
@@ -43,7 +44,8 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
       url: props.file.url,
       public: props.file.public,
       type: props.type,
-      mutated_at: props.mutatedAt.value,
+      client_created_at: props.clientCreatedAt.value,
+      client_updated_at: props.clientUpdatedAt.value,
     };
   }
 }
