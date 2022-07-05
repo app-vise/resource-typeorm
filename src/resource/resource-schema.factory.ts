@@ -4,7 +4,12 @@ import {
   EntitySchemaProps,
 } from '@appvise/typeorm';
 import { DateVO, UUID } from '@appvise/domain';
-import { File, Resource, ResourceProps } from '@appvise/resource';
+import {
+  File,
+  Resource,
+  ResourceParentType,
+  ResourceProps,
+} from '@appvise/resource';
 import { ResourceSchema } from './resource.schema';
 
 export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
@@ -26,6 +31,10 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
         public: entitySchema.public,
       }),
       type: entitySchema.type,
+      parentId: entitySchema.parent_id
+        ? new UUID(entitySchema.parent_id)
+        : undefined,
+      parentType: entitySchema.parent_type as ResourceParentType,
       clientCreatedAt: new DateVO(entitySchema.client_created_at),
       clientUpdatedAt: new DateVO(entitySchema.client_updated_at),
     };
@@ -44,6 +53,8 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
       url: props.file.url,
       public: props.file.public,
       type: props.type,
+      parent_id: props.parentId ? props.parentId.value : undefined,
+      parent_type: props.parentType,
       client_created_at: props.clientCreatedAt.value,
       client_updated_at: props.clientUpdatedAt.value,
     };
