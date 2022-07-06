@@ -6,12 +6,7 @@
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@config/appvise/resource": [
-        "./src/config/resource"
-      ]
-    }
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/**/*"
