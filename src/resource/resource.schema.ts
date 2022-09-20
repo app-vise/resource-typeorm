@@ -31,9 +31,9 @@ export class ResourceSchema extends EntityBaseSchema {
   @Column({ nullable: true })
   readonly parent_type?: string;
 
-  @Column({ type: 'timestamp', default: 'CURRENT_TIMESTAMP(6)' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   readonly client_created_at!: Date;
 
-  @Column({ type: 'timestamp', default: 'CURRENT_TIMESTAMP(6)' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   readonly client_updated_at!: Date;
 }
