@@ -35,6 +35,7 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
         ? new UUID(entitySchema.parent_id)
         : undefined,
       parentType: entitySchema.parent_type as ResourceParentType,
+      creatorId: new UUID(entitySchema.creator_id),
       clientCreatedAt: new DateVO(entitySchema.client_created_at),
       clientUpdatedAt: new DateVO(entitySchema.client_updated_at),
     };
@@ -55,6 +56,7 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
       type: props.type,
       parent_id: props.parentId ? props.parentId.value : undefined,
       parent_type: props.parentType,
+      creator_id: props.creatorId.value,
       client_created_at: props.clientCreatedAt.value,
       client_updated_at: props.clientUpdatedAt.value,
     };
