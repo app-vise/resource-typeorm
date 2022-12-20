@@ -1,9 +1,9 @@
-import { EntityBaseSchema } from '@appvise/typeorm';
+import { EntityBaseStampedSchema } from '@appvise/typeorm';
 import { Column, Entity } from 'typeorm';
 import { MimeType, ResourceType } from '@appvise/resource';
 
 @Entity('resource')
-export class ResourceSchema extends EntityBaseSchema {
+export class ResourceSchema extends EntityBaseStampedSchema {
   @Column({ type: 'enum', enum: ResourceType })
   readonly type!: ResourceType;
 

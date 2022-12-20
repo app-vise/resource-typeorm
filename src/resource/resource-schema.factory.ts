@@ -1,7 +1,7 @@
 import {
-  EntityProps as TypeOrmEntityProps,
-  EntitySchemaFactory as TypeOrmEntitySchemaFactory,
-  EntitySchemaProps,
+  EntityStampedProps,
+  EntityStampedSchemaFactory,
+  EntityStampedSchemaProps,
 } from '@appvise/typeorm';
 import { DateVO, UUID } from '@appvise/domain';
 import {
@@ -12,13 +12,13 @@ import {
 } from '@appvise/resource';
 import { ResourceSchema } from './resource.schema';
 
-export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
+export class ResourceSchemaFactory extends EntityStampedSchemaFactory<
   Resource,
   ResourceSchema
 > {
   protected toDomainProps(
     entitySchema: ResourceSchema
-  ): TypeOrmEntityProps<ResourceProps> {
+  ): EntityStampedProps<ResourceProps> {
     const id = new UUID(entitySchema.id);
 
     const props: ResourceProps = {
@@ -43,7 +43,9 @@ export class ResourceSchemaFactory extends TypeOrmEntitySchemaFactory<
     return { id, props };
   }
 
-  protected toSchemaProps(entity: Resource): EntitySchemaProps<ResourceSchema> {
+  protected toSchemaProps(
+    entity: Resource
+  ): EntityStampedSchemaProps<ResourceSchema> {
     const props = entity.getPropsCopy();
 
     return {
