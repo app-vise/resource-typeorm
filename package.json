@@ -41,7 +41,7 @@
   "dependencies": {
     "@appvise/domain": "^1.5.0",
     "@appvise/resource": "^1.2.0",
-    "@appvise/typeorm": "^1.4.1"
+    "@appvise/typeorm": "^1.4.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
