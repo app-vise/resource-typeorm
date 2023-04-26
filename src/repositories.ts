@@ -1,7 +1,5 @@
 import {
   RepositoryConfig,
-  TypeormStampedReadRepository,
-  TypeormStampedWriteRepository,
   TypeormStampedRepositoryProvider,
 } from '@appvise/typeorm';
 import { Resource } from '@appvise/resource';
@@ -34,12 +32,10 @@ export const ResourceTenantRepositories: RepositoryConfig[] = [
     class: 'ResourceReadRepository',
     schema: ResourceSchema,
     factory: resourceSchemaFactory,
-    customReadRepository: TypeormStampedReadRepository,
   },
   {
     class: 'ResourceWriteRepository',
     schema: ResourceSchema,
     factory: resourceSchemaFactory,
-    customReadRepository: TypeormStampedWriteRepository,
   },
 ];
