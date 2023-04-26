@@ -1,6 +1,6 @@
 {
   "name": "@appvise/resource-typeorm",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "TypeORM persistence for @appvise/resource package",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
