@@ -1,4 +1,9 @@
-import { TypeormStampedRepositoryProvider } from '@appvise/typeorm';
+import {
+  RepositoryConfig,
+  TypeormStampedReadRepository,
+  TypeormStampedWriteRepository,
+  TypeormStampedRepositoryProvider,
+} from '@appvise/typeorm';
 import { Resource } from '@appvise/resource';
 import { ResourceSchema, ResourceSchemaFactory } from './resource';
 import { Provider } from '@nestjs/common/interfaces/modules/provider.interface';
@@ -21,4 +26,20 @@ export const ResourceRepositories: Provider[] = [
     ResourceSchema,
     resourceSchemaFactory
   ),
+];
+
+export const ResourceTenantRepositories: RepositoryConfig[] = [
+  // Resource
+  {
+    class: 'ResourceReadRepository',
+    schema: ResourceSchema,
+    factory: resourceSchemaFactory,
+    customReadRepository: TypeormStampedReadRepository,
+  },
+  {
+    class: 'ResourceWriteRepository',
+    schema: ResourceSchema,
+    factory: resourceSchemaFactory,
+    customReadRepository: TypeormStampedWriteRepository,
+  },
 ];
